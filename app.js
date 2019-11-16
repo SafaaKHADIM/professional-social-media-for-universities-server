@@ -13,8 +13,10 @@ app.use(cors());
 app.use('/api', rtsIndex);
 
 
-
-
+//app.get('/favicon', (req, res) => res.status(204))
+// app.get('/', function (req, res) {
+//   res.render('index', {});
+// });
 // error handler
 app.use((err, req, res, next) => {
     if (err.name === 'ValidationError') {
