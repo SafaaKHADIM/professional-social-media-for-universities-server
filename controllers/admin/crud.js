@@ -15,7 +15,7 @@ module.exports.addAdmin = (req, res, next) => {
         if (!err)
             res.send(doc);
         else {
-                res.send(err);
+            res.send(err);
         }
     });
 }

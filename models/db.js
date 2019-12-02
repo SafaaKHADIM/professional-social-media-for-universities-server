@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+// import mongoose  from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI, (err) => {
-    if (!err) { console.log('MongoDB connection succeeded.'); }
-    else { console.log('Error in MongoDB connection : ' + JSON.stringify(err, undefined, 2)); }
-});
-
+// var connect = mongoose.connect("mongodb://localhost:27017/socialmedia", {
+//     useNewUrlParser: true,
+//     autoReconnect: true,
+//     useUnifiedTopology:true,
+//     useCreateIndex: true,
+// });
 require('./admin');

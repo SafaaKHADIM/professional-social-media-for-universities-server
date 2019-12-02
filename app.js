@@ -1,16 +1,18 @@
-require('./config/config');
-require('./models/db');
+import './config/config';
+import './models/db';
+import config from './config'
+import express from 'express'
+import * as bodyParser from 'body-parser'
+import cors from 'cors';
+import mongoose from 'mongoose'
+const rtsIndex = require('./routes/admin');
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const rtsIndex = require('./routes/index.router');
 
-var app = express();
+let app = express();
 // middleware
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/api', rtsIndex);
+app.use('/api/admin', rtsIndex);
 
 
 //app.get('/favicon', (req, res) => res.status(204))
@@ -26,5 +28,17 @@ app.use((err, req, res, next) => {
     }
 });
 
+// mongoose.set('useCreateIndex', true);
+var connect = mongoose.connect(config.mongourl, {
+    useNewUrlParser: true,
+    autoReconnect: true,
+    useUnifiedTopology:true,
+    useCreateIndex: true,
+});
+// require('./models/admin');
+connect.then(() => {
+    console.log('Connect correctly to the server !');
+}, (err) => console.log('Cannot connect correctly to the server !'));
+// require('./models/admin');
 // start server
-app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server started at port ${process.env.PORT}`));
