@@ -5,6 +5,7 @@ const Admin = mongoose.model('Admin');
 
 //CREATE
 module.exports.addAdmin = (req, res, next) => {
+    
     var admin = new Admin();
     admin.fullName = req.body.fullName;
     admin.email = req.body.email;
