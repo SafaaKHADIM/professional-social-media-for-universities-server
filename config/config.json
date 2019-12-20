@@ -1,0 +1,10 @@
+{
+    "development": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://localhost:27017/socialmedia"
+    },
+    "production": {
+        "PORT": 8000,
+        "MONGODB_URI": "mongodb://localhost:27017/socialmedia"
+    }
+}
